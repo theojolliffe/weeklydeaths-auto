@@ -9,6 +9,9 @@ h3
         | remain stable
     | in England and Wales
 
+h4
+    | 14 June 2022
+
 p 
     | There were #[+value(data['Deaths involving COVID-19'][1])] deaths registered in England and Wales involving coronavirus (COVID-19) 
     | in the #[+value(meta['date'])].
