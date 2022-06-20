@@ -1,28 +1,27 @@
 - var deathdiff = data['Deaths involving COVID-19'][1] - data['Deaths involving COVID-19'][0]
 h3 
-    | Deaths involving COVID-19 
-    if (deathdiff < -10)
-        | fall
-    else if (deathdiff > 10)
-        | rise 
-    else
-        | remain stable
-    | in England and Wales
+    | Infections rising in parts of the UK
+
+h4
+    | Date
+
+if (meta['topline1'])
+    p 
+        | #[+value(meta['topline1'])]
+
+if (meta['topline2'])
+    p 
+        | #[+value(meta['topline2'])]
+
+if (meta['topline3'])
+    p 
+        | #[+value(meta['topline3'])]
 
 p 
-    | There were #[+value(data['Deaths involving COVID-19'][1])] deaths registered in England and Wales involving coronavirus (COVID-19) 
-    | in the #[+value(meta['date'])].
-    | This was #[+value(Math.abs(deathdiff))] #[+value(deathdiff<0?'fewer':'more')] than the previous week, 
-    | accounting for 
-    | around #[+value(get_word( (data['Percentage of deaths involving COVID-19'][1])/100, 'frac')[1])] deaths
-    | (#[+value((data['Percentage of deaths involving COVID-19'][1])/100, {'FORMAT': '0.0%'})]).
-    | #[+value(meta['disclaimer'])]
-
-p 
-    | There were #[+value(data['Total deaths (all causes)'][1])] total deaths registered in England and Wales in the latest week, 
-    | which is
-    | #[+value((Math.abs(data['Percentage of deaths involving COVID-19'][1])/100), {'FORMAT': '0.0%'})] 
-    | #[+value(data['Percentage of deaths involving COVID-19'][1]>0?'above':'below')] the five-year average
-    | #[+value(meta['disclaimer2'])].
+    | The estimated percentage of the community population (those not in hospitals, care homes or other institutional settings) that had COVID-19 in the latest week was:
+ul 
+    li ok
+    li ok
+    li ok
 
 

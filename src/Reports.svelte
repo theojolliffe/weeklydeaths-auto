@@ -94,6 +94,18 @@
 		rewrite = true
 	}
 
+	let active = false, navigating = false, active2 = false;
+	
+	function simulateNavigation() {		
+		navigating = true
+		console.log("clicked", navigating);
+		setTimeout(() => { // Reset
+			navigating = false;
+			active = false;
+			active2 = false;
+		}, 2000);
+	}	
+
 
 </script>
 
@@ -107,6 +119,51 @@
 		{#if data}
 			<main>
 				{@html results(data, topics)}
+
+
+				<!-- THIS IS THE DISCLAIMER -->
+				<div style="width: 180px; background: #f4f4f4; border-radius: 5px;" class:active on:mouseenter={() => {
+						console.log("enter", navigating);
+						if (!navigating) {
+							active = true;
+							active2 = true;
+						}
+					}}
+					on:mouseleave={() => {
+						console.log("leave", navigating);
+						if (!navigating) {
+							active = false;
+							active2 = false;
+						}
+					}} on:click={simulateNavigation}>
+					<div style="width: 15px; float: left; padding: 3px 6px 6px 16px;">
+						<div class="css-1dbjc4n r-1habvwh r-18u37iz r-dnmrzs r-1ny4l3l">
+							<div class="css-1dbjc4n r-14g73ha r-1d4mawv r-1bymd8e r-1b94p3d"><svg viewBox="0 0 24 24" aria-hidden="true" style="fill: rgb(136 136 136);"><g><path d="M12.22 1.75h-.44c-4.51 0-8.16 3.65-8.16 8.16v6.84c0 3.04 2.46 5.5 5.5 5.5h5.76c3.04 0 5.5-2.46 5.5-5.5V9.91c0-4.51-3.65-8.16-8.16-8.16zM8.61 13.52c-1.05 0-1.89-.85-1.89-1.9s.84-1.9 1.89-1.9c1.04 0 1.89.85 1.89 1.9s-.85 1.9-1.89 1.9zm6.78 0c-1.04 0-1.89-.85-1.89-1.9s.85-1.9 1.89-1.9c1.05 0 1.89.85 1.89 1.9s-.84 1.9-1.89 1.9zM23 9.17v5.66c0 .5-.41.91-.91.91h-.05c-.5 0-.91-.41-.91-.91V9.17c0-.51.41-.91.91-.91h.05c.5 0 .91.4.91.91zm-20.13 0v5.66c0 .5-.41.91-.91.91h-.05c-.5 0-.91-.41-.91-.91V9.17c0-.51.41-.91.91-.91h.05c.5 0 .91.4.91.91z"></path></g></svg></div>
+						</div>
+					</div>
+					<div dir="auto">
+						<span style="font-size: small; padding: 10px 10px 10px 10px; colour: rgb(136 136 136)">Semi-automated</span>
+					</div>
+				</div>
+				<div style="width: 400px; font-size: small; display: none; padding: 5px;" class:active2 on:mouseenter={() => {
+					console.log("enter", navigating);
+						if (!navigating) {
+							active2 = true;
+						}
+					}}
+					on:mouseleave={() => {
+						console.log("leave", navigating);
+						if (!navigating) {
+							active2 = false;
+						}
+					}} on:click={simulateNavigation}>
+					<p>
+						This content was created using some automation. 
+						<a href="">
+							Find out more about how the ONS use automation in digital publishing.
+						</a>
+					</p>
+				</div>
 			</main>
 		{/if}
 	{/if}
@@ -114,6 +171,13 @@
 
 
 <style>
+	.active {
+		background:#ddd !important;
+		display:block
+	}
+	.active2 {
+		display: block !important;
+	}
 	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 	:global(body) {
 		font-family: 'Open Sans', sans-serif;

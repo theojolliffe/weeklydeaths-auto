@@ -1,6 +1,7 @@
 {
-  "name": "svelte-app",
+  "name": "weeklydeaths-auto",
   "version": "1.0.0",
+  "homepage": "https://theojolliffe.github.io/weeklydeaths-auto/",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
